@@ -1,13 +1,15 @@
 package org.acme.rest.client;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import io.smallrye.mutiny.Uni;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 @Path("/external")
 public interface ExternalService {
-    @GET
-    @Path("/doAuthCallExternal/{name}")
-    public String doAuthCallExternal(@PathParam("name") String name);
+    @POST
+    @Path("/invoke/{name}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<String> invoke(@PathParam("name") String name);
+
 }

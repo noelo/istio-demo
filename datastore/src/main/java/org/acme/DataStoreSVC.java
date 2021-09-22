@@ -9,21 +9,21 @@ import javax.ws.rs.core.MediaType;
 public class DataStoreSVC {
 
     @POST
-    @Path("/doPrivWrite/{name}")
+    @Path("/persist/{name}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> doPrivWrite(@PathParam("name") String name) {
+    public Uni<String> persist(@PathParam("name") String name) {
         return Uni.createFrom()
                 .item(name)
                 .onItem()
-                .transform(x -> x.concat("->DataStorePrivWrite->"));
+                .transform(x -> x.concat("->dataStore.persist->"));
     }
 
     @GET
-    @Path("/doAuthRead/")
+    @Path("/retrieve/")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> doAuthRead() {
+    public Uni<String> read() {
         return Uni.createFrom()
                 .item("testdata")
-                .onItem().transform(x -> x.concat("->DataStoreAuthRead->"));
+                .onItem().transform(x -> x.concat("->dataStore.retrieve->"));
     }
 }

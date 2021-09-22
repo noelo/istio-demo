@@ -8,13 +8,23 @@ import javax.ws.rs.core.MediaType;
 @Path("/external")
 public class ExternalService {
 
-    @GET
-    @Path("/doAuthCallExternal/{name}")
+    @POST
+    @Path("/invoke/{name}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> doAuthCallExternal(@PathParam("name") String name) {
+    public Uni<String> invoke(@PathParam("name") String name) {
         return Uni.createFrom()
                 .item(name)
                 .onItem()
-                .transform(x -> x.concat("->ExtSvcAuthCallExternal->"));
+                .transform(x -> x.concat("->external.invoke->"));
+    }
+
+    @POST
+    @Path("/invokeSecure/{name}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<String> invokeSecure(@PathParam("name") String name) {
+        return Uni.createFrom()
+                .item(name)
+                .onItem()
+                .transform(x -> x.concat("->external.invokeSecure->"));
     }
 }

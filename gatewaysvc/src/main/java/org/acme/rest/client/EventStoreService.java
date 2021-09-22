@@ -1,18 +1,21 @@
 package org.acme.rest.client;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import io.smallrye.mutiny.Uni;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 
 @Path("/eventstore")
 public interface EventStoreService {
 
     @POST
-    @Path("/doPrivProduce/{name}")
-    public String doPrivProduce(@PathParam("name") String name);
+    @Path("/persist/{name}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<String> persist(@PathParam("name") String name);
+
 
     @GET
-    @Path("/doAuthConsume/")
-    public String doAuthConsume();
+    @Path("/read/")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<String> read() ;
 }

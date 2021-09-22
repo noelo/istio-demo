@@ -9,30 +9,40 @@ import javax.ws.rs.core.MediaType;
 public class Gateway {
 
     @GET
-    @Path("/doUnauthAction/{name}")
+    @Path("/items/")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> doUnauth(@PathParam("name") String name) {
+    public Uni<String> getItems() {
         return Uni.createFrom()
-                .item(name)
+                .item("getitems")
                 .onItem()
-                .transform(x -> x.concat("->GWUnauth->"));
-    }
-
-    @GET
-    @Path("/doAuthAction/{name}")
-    @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> doAuth(@PathParam("name") String name) {
-        return Uni.createFrom()
-                .item(name)
-                .onItem().transform(x -> x.concat("->GWAuth->"));
+                .transform(x -> x.concat("->gateway.getItems->"));
     }
 
     @POST
-    @Path("/doPrivAuthAction/{name}")
+    @Path("/items/{item}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> doPrivAuth(@PathParam("name") String name) {
+    public Uni<String> createItem(@PathParam("item") String item) {
         return Uni.createFrom()
-                .item(name)
-                .onItem().transform(x -> x.concat("->GWPrivAuth->"));
+                .item(item)
+                .onItem()
+                .transform(x -> x.concat("->gateway->createItem"));
+    }
+
+    @POST
+    @Path("/invokeSvc/")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<String> invokeSVC() {
+        return Uni.createFrom()
+                .item("invokeSVC")
+                .onItem().transform(x -> x.concat("->gateway.invokeSVC->"));
+    }
+
+    @GET
+    @Path("/auditlog")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Uni<String> getAuditLog() {
+        return Uni.createFrom()
+                .item("auditlog")
+                .onItem().transform(x -> x.concat("->gateway.getAuditLog->"));
     }
 }

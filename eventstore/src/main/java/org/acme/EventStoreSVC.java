@@ -9,21 +9,21 @@ import javax.ws.rs.core.MediaType;
 public class EventStoreSVC {
 
     @POST
-    @Path("/doPrivProduce/{name}")
+    @Path("/persist/{name}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> doPrivProduce(@PathParam("name") String name) {
+    public Uni<String> persist(@PathParam("name") String name) {
         return Uni.createFrom()
                 .item(name)
                 .onItem()
-                .transform(x -> x.concat("->EventStoreWrite->"));
+                .transform(x -> x.concat("->eventstore.persist->"));
     }
 
     @GET
-    @Path("/doAuthConsume/")
+    @Path("/read/")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> doAuthConsume() {
+    public Uni<String> read() {
         return Uni.createFrom()
                 .item("testevent")
-                .onItem().transform(x -> x.concat("->EventStoreRead->"));
+                .onItem().transform(x -> x.concat("->eventstore.retrieve->"));
     }
 }
