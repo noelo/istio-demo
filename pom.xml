@@ -10,8 +10,8 @@
   <modules>
     <module>datastore</module>
     <module>eventstore</module>
-    <module>gatewaysvc</module>
     <module>extsvc</module>
+    <module>gatewaysvc</module>
   </modules>
   <properties>
     <compiler-plugin.version>3.8.1</compiler-plugin.version>
@@ -129,15 +129,6 @@
             <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
             <maven.home>${maven.home}</maven.home>
           </systemPropertyVariables>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.jkube</groupId>
-        <artifactId>openshift-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <configuration>
-          <skipResource>true</skipResource>
-          <skip>true</skip>
         </configuration>
       </plugin>
     </plugins>

@@ -22,10 +22,9 @@
               <skipResource>false</skipResource>
               <skip>false</skip>
             </configuration>
-            <phase>package</phase>
+            <phase>package</phase> 
             <goals>
               <goal>resource</goal>
-              <goal>helm</goal>
             </goals>
           </execution>
         </executions>

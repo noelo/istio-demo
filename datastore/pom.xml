@@ -13,15 +13,6 @@
     <plugins>
       <plugin>
         <groupId>org.eclipse.jkube</groupId>
-        <artifactId>kubernetes-maven-plugin</artifactId>
-        <version>1.4.0</version>
-        <configuration>
-          <skipResource>false</skipResource>
-          <skip>false</skip>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.eclipse.jkube</groupId>
         <artifactId>openshift-maven-plugin</artifactId>
         <version>1.4.0</version>
         <executions>
@@ -34,7 +25,6 @@
             <phase>package</phase>
             <goals>
               <goal>resource</goal>
-              <goal>helm</goal>
             </goals>
           </execution>
         </executions>
