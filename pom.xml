@@ -3,9 +3,8 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.acme</groupId>
   <artifactId>istio-demo-parent</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <name>Archetype - parent-project</name>
-  <url>http://maven.apache.org</url>
+  <version>1.0</version>
+  <name>IstioDemo</name>
   <packaging>pom</packaging>
   <modules>
     <module>datastore</module>
@@ -88,6 +87,10 @@
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-openshift</artifactId>
     </dependency>
   </dependencies>
   <build>

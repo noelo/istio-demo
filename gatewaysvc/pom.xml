@@ -3,10 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.acme</groupId>
   <artifactId>gatewaysvc</artifactId>
+  
   <parent>
     <groupId>org.acme</groupId>
     <artifactId>istio-demo-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
   </parent>
 
   <dependencies>
@@ -43,22 +44,14 @@
             <configuration>
               <skipResource>false</skipResource>
               <skip>false</skip>
+              <helm>
+                <chart>istio-demo</chart>
+                <keywords>istio, ossm, demo</keywords>
+              </helm>
             </configuration>
             <phase>package</phase>
             <goals>
               <goal>resource</goal>
-              <goal>helm</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>jkube-helm</id>
-            <configuration>
-              <skipResource>false</skipResource>
-              <skip>false</skip>
-              <failOnValidationError>false</failOnValidationError>
-            </configuration>
-            <phase>install</phase> 
-            <goals>
               <goal>helm</goal>
             </goals>
           </execution>

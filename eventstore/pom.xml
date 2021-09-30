@@ -6,10 +6,10 @@
   <parent>
     <groupId>org.acme</groupId>
     <artifactId>istio-demo-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
   </parent>
 
-  <build> 
+  <build>
     <plugins>
       <plugin>
         <groupId>org.eclipse.jkube</groupId>
@@ -21,6 +21,13 @@
             <configuration>
               <skipResource>false</skipResource>
               <skip>false</skip>
+              <enricher>
+                <config>
+                  <jkube-openshift-route>
+                    <generateRoute>false</generateRoute>
+                  </jkube-openshift-route>
+                </config>
+              </enricher>
             </configuration>
             <goals>
               <goal>resource</goal>
