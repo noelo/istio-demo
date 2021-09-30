@@ -4,9 +4,11 @@ import io.smallrye.mutiny.Uni;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 
 
 @Path("/datastore")
+@RegisterRestClient
 public interface DataStoreService {
 
     @POST

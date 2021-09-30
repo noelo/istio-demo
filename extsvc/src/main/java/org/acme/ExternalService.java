@@ -9,22 +9,22 @@ import javax.ws.rs.core.MediaType;
 public class ExternalService {
 
     @POST
-    @Path("/invoke/{name}")
+    @Path("/invoke/{args}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> invoke(@PathParam("name") String name) {
+    public Uni<String> invoke(@PathParam("args") String args) { 
         return Uni.createFrom()
-                .item(name)
+                .item(args)
                 .onItem()
-                .transform(x -> x.concat("->external.invoke->"));
+                .transform(x -> "->external.invoke->".concat(args.toUpperCase()));
     }
 
     @POST
-    @Path("/invokeSecure/{name}")
+    @Path("/invokeSecure/{args}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Uni<String> invokeSecure(@PathParam("name") String name) {
+    public Uni<String> invokeSecure(@PathParam("args") String args) {
         return Uni.createFrom()
-                .item(name)
+                .item(args)
                 .onItem()
-                .transform(x -> x.concat("->external.invokeSecure->"));
+                .transform(x -> "->external.invokeSecure->".concat(args.replaceAll(".*", "*")));
     }
 }
